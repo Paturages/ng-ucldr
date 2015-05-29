@@ -20,7 +20,8 @@ function(w) {
 	return {
 		restrict: 'E',
 		scope: {
-			"f": "=bindTo"
+			"f": "=bindTo",
+			"i": "=init"
 		},
 		controller: function($scope) {
 			var s = $scope;
@@ -98,8 +99,11 @@ function(w) {
 			};
 			s.t = [[],[],[],[],[],[]];
 		},
-		template:'<div class="ucldr-text" ng-click="s=!s">{{ts()}}</div><table class="ucldr" ng-if="s"><thead><tr><th><button ng-click="dm()">&lt;</button></th><th colspan=5><select class="ucldr_month" ng-model="c.m"><option ng-repeat="m in lm" value="{{$index}}" ng-selected="c.m==$index" ng-disabled="c.y==n.y&&$index>n.m">{{m}}</option></select><select class="ucldr_year" ng-model="c.y" ng-options="y for y in ly"></select></th><th><button ng-click="im()">&gt;</button></th></tr></thead><tbody><tr><th ng-repeat="d in ld">{{d}}</th></tr><tr ng-repeat="w in t | f1: gnd(): gds()"><td ng-repeat="d in w track by $index" class="{{de(d)}}" ng-click="tg(d)">{{d}}</td></tr></tbody></table>',
+		template:'<div class="ucldr-text" ng-click="s=!s">{{ts()}}</div><table class="ucldr" ng-if="s"><thead><tr><th><button type="button" ng-click="dm()">&lt;</button></th><th colspan=5><select class="ucldr_month" ng-model="c.m"><option ng-repeat="m in lm" value="{{$index}}" ng-selected="c.m==$index" ng-disabled="c.y==n.y&&$index>n.m">{{m}}</option></select><select class="ucldr_year" ng-model="c.y" ng-options="y for y in ly"></select></th><th><button type="button" ng-click="im()">&gt;</button></th></tr></thead><tbody><tr><th ng-repeat="d in ld">{{d}}</th></tr><tr ng-repeat="w in t | f1: gnd(): gds()"><td ng-repeat="d in w track by $index" class="{{de(d)}}" ng-click="tg(d)">{{d}}</td></tr></tbody></table>',
 		link: function(s, e) {
+			if (s.i)
+				for (var p in s.i)
+					s.c[p] = s.i[p];
 			s.f = s.c;
 			e.bind('click', function(x) {
 				x.stopPropagation();

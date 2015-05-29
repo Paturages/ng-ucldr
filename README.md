@@ -12,8 +12,9 @@ HTML
 <script src="/path/to/angular.min.js"></script>
 <script src="/path/to/ucldr.js"></script>
 ...
-<ng-ucldr bind-to="dateVariable"></ng-ucldr>
+<ng-ucldr bind-to="dateVariable" init={d: day, m: month, y: year}></ng-ucldr>
 ````
+Keep in mind that the month format for *init* is JavaScript (i.e. 0-11).
 
 AngularJS
 ----------

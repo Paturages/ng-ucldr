@@ -1,7 +1,10 @@
 # ng-ucldr
 Dropdown minimalistic customizable calendar relying on nothing but AngularJS (and Vanilla)
 
-...at least that's the long run plan. Right now, it's just a draft.
+Install
+==============
+
+`npm install ng-ucldr` or just grab a `.js` file from `dist`. It's really not big at all!
 
 Usage
 ==============
@@ -9,36 +12,38 @@ HTML
 -----
 ````
 ...
-<script src="/path/to/angular.min.js"></script>
+<script src="/path/to/angular.js"></script>
 <script src="/path/to/ucldr.js"></script>
 ...
-<ng-ucldr bind-to="dateVariable" init={d: day, m: month, y: year}></ng-ucldr>
+<ng-ucldr
+  bind-to="dateVariable"
+  default="{day: 12, month: 2, year: 2010}"
+  months="J F M A M J J A S O N D"
+  weekdays="M T W T F S S"
+  year-range="2000 2020"
+  week-start="1"
+></ng-ucldr>
 ````
-Keep in mind that the month format for *init* is JavaScript (i.e. 0-11).
+Everything but `bind-to` is optional (see `src/ng-ucldr.js` for enforced defaults). Keep in mind that the month format for `default` follows JavaScript's convention (i.e. 0-11).  
 
-AngularJS
-----------
-````
-...
-console.log($scope.dateVariable.d); // Day (1-31)
-console.log($scope.dateVariable.m); // Month (0-11)
-console.log($scope.dateVariable.y); // Year (yyyy)
-...
-````
+`dateVariable` yields a date in the same format as `default`.
 
 CSS
 -----
 ````
-.ucldr-text {
+.ucldr {
+  /* The component container */
+}
+.ucldr__label {
   /* The div containing the clickable date text */
 }
-.ucldr {
+.ucldr__table {
   /* The table containing the calendar */
 }
-.ucldr_month {
+.ucldr__month {
   /* The select containing the months */
 }
-.ucldr_year {
+.ucldr__year {
   /* The select containing the years */
 }
 .ucldr button {
@@ -47,19 +52,19 @@ CSS
 .ucldr tbody th {
   /* The day headers */
 }
-.ucldr td {
+.ucldr__day {
   /* All of the day frames (including empty ones) */
 }
-.ucldr .pst {
+.ucldr__day--past {
   /* Days in the past */
 }
-.ucldr .tdy {
+.ucldr__day--today {
   /* Today */
 }
-.ucldr .ftr {
+.ucldr__day--future {
   /* Future */
 }
-.ucldr .slct {
+.ucldr__day--selected {
   /* Selected date */
 }
 ````

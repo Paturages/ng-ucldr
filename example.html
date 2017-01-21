@@ -1,0 +1,62 @@
+<html ng-app="ngUcldr">
+<head>
+	<script src="./node_modules/angular/angular.min.js"></script>
+	<script src="./dist/ng-ucldr.js"></script>
+	<style type="text/css">
+	.ucldr {
+		background-color: #eeffaa;
+	}
+
+	.ucldr__label {
+		cursor: pointer;
+		opacity: .5;
+	}
+
+	.ucldr__label:hover {
+		opacity: 1;
+	}
+
+	.ucldr__table {
+		text-align: center;
+	}
+
+	.ucldr__day {
+		cursor: pointer;
+		opacity: .5;
+	}
+
+	.ucldr__day:hover {
+		opacity: 1;
+	}
+
+	.ucldr__day--today {
+		background-color: #ffe3e3;
+	}
+
+	.ucldr__day--future {
+		color: #aaaaaa;
+	}
+
+	.ucldr__day--selected {
+		border: 1px solid;
+		background-color: yellow;
+	}
+	</style>
+</head>
+<body>
+
+<h1>Test of directive</h1>
+
+<ng-ucldr
+	bind-to="test"
+	default="{day: 12, month: 2, year: 2010}"
+	months="J F M A M J J A S O N D"
+	weekdays="M T W T F S S"
+	year-range="2000 2020"
+	week-start="1"
+></ng-ucldr>
+
+<h2>Current selection: {{ test }}</h2>
+
+</body>
+</html>

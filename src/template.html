@@ -1,0 +1,48 @@
+<div class="ucldr">
+  <div class="ucldr__label" ng-click="isVisible = !isVisible">
+    {{ instance.year }}-{{ instance.month+1 }}-{{ instance.day }}
+  </div>
+  <table class="ucldr__table" ng-if="isVisible">
+    <thead>
+      <tr>
+        <th>
+          <button type="button" ng-click="decrementMonth()">&lt;</button>
+        </th>
+        <th colspan="5">
+          <select class="ucldr__month" ng-model="instance.month">
+            <option
+              ng-repeat="month in monthLabels track by $index"
+              ng-value="$index"
+              ng-selected="instance.month == $index"
+            >
+              {{ month }}
+            </option>
+          </select>
+          <select class="ucldr__year"
+            ng-model="instance.year"
+            ng-options="year for year in yearLabels">
+          </select>
+        </th>
+        <th>
+          <button type="button" ng-click="incrementMonth()">&gt;</button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th ng-repeat="weekday in weekdayLabels track by $index">
+          {{ weekday }}
+        </th>
+      </tr>
+      <tr ng-repeat="week in dayItems | getDayItems: getNumberOfDays(): getMonthStartWeekdayOffset()">
+        <td ng-repeat="day in week track by $index"
+          class="ucldr__day"
+          ng-class="'ucldr__day--' + getDayItemClass(day)"
+          ng-click="selectDay(day)"
+        >
+          {{ day }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

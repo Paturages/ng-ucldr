@@ -1,0 +1,27 @@
+{
+  "name": "ng-ucldr",
+  "description": "Minimalistic customizable calendar input",
+  "version": "0.1.0",
+  "homepage": "https://github.com/Paturages/ng-ucldr",
+  "author": "Paturages <c.ingouff@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Paturages/ng-ucldr"
+  },
+  "keywords": [
+    "angular",
+    "ui",
+    "calendar"
+  ],
+  "maintainers": [
+    {
+      "name": "Paturages",
+      "website": "http://fightthe.pw"
+    }
+  ],
+  "dependencies": {
+    "angular": "^1.6.1"
+  },
+  "devDependencies": {},
+  "license": "MIT"
+}
